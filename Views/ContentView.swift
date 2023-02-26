@@ -3,62 +3,47 @@
 //  Views
 //
 //  Created by Biloliddin Nosirov on 2023/02/23.
-// Relative Spacing with Spacers
+// Getting Size
+
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
         
-        VStack {
-            Text("Spacer")
+        VStack(spacing: 20) {
+            Text("GeomitryReader")
                 .font(.largeTitle)
-            
-            Text("Relative Spacing")
+            Text("Getting Size")
                 .font(.title)
                 .foregroundColor(.gray)
             
-            Text("You can add more spacers to create relative spacing in comparison to other spacers.")
-            .frame(maxWidth: .infinity).padding()
-            .background(Color.yellow).foregroundColor(.black)
-            .font(.title)
+            Text("Use the geometry reader when you need to get the height and/or width of a space")
+                .font(.title)
             
-            
-            HStack(spacing: 50) {
-                VStack(spacing: 5)  {
-                    Spacer()
-                        .frame(width: 5)
-                        .background(Color.blue)
-                    Text("33% Down")
-                    Spacer()
-                        .frame(width: 5)
-                        .background(Color.blue)
-                    Spacer()
-                        .frame(width: 5)
-                        .background(Color.blue)
+            GeometryReader { geometryProxy in
+                VStack(spacing: 10) {
+                    Text("Width: \(geometryProxy.size.width)")
+                    Text("Height: \(geometryProxy.size.height)")
                 }
-                VStack(spacing: 5)  {
-                    Spacer()
-                        .frame(width: 5)
-                        .background(Color.blue)
-                    Spacer()
-                        .frame(width: 5)
-                        .background(Color.blue)
-                    Spacer()
-                        .frame(width: 5)
-                        .background(Color.blue)
-                    Text("75% Down")
-                    Spacer()
-                        .frame(width: 5)
-                        .background(Color.blue)
-                }
-                }
+                .padding()
+                .foregroundColor(.white)
             }
+            .background(Color.pink)
+        }
+        .font(.title)
+        
+        
+        
+        
+        
+        
+       
         }
     }
     struct ContentView_Previews: PreviewProvider {
         static var previews: some View {
             ContentView()
-                .preferredColorScheme(.dark)
+                .preferredColorScheme(.light)
             
         }
     }
