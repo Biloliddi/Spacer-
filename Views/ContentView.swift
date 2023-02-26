@@ -3,7 +3,7 @@
 //  Views
 //
 //  Created by Biloliddin Nosirov on 2023/02/23.
-// Position
+// Min Mid Max Coordinates Continued
 
 import SwiftUI
 
@@ -15,32 +15,46 @@ struct ContentView: View {
         VStack(spacing: 20) {
             Text("GeomitryReader")
                 .font(.largeTitle)
-            Text("Positon")
+            Text("Min Mid Max")
                 .font(.title)
                 .foregroundColor(.gray)
             
-            Text("Use the GeometryProxy input parameter to help position child views at different locations within geometry's view.")
+            Text("You can also get the minimum (min), middle(mind), and maximum (max)cX and Y  coordinate from the geomerty reader's frame.")
                 .font(.title)
             
-            GeometryReader { geometryProxy in
-                Text("Upper Left")
-                    .font(.title)
-                    .position(x: geometryProxy.size.width/5,
-                              y: geometryProxy.size.width/10)
-                
-                Text("Lower Right")
-                    .font(.title)
-                    .position(x: geometryProxy.size.width - 90,
-                              y: geometryProxy.size.width - 40)
+            GeometryReader { geometry in
+                VStack (spacing: 10) {
+                   
+                    HStack(spacing: 10) {
+                        //I'm converting to Int just so we don't have so many zeros
+                        Text("minX: \(Int(geometry.frame(in: .local).minY))")
+                       Spacer()
+                        Text("minX: \(Int(geometry.frame(in: .local).minY))")
+                    Spacer()
+                        Text("minX: \(Int(geometry.frame(in: .local).minY))")
+                    }
+                    Text("Global Coordinate Space")
+                    HStack(spacing: 10) {
+                        //I'm converting to Int just so we don't have so many zeros
+                        Text("minX: \(Int(geometry.frame(in: .local).minX))")
+                       Spacer()
+                        Text("minX: \(Int(geometry.frame(in: .local).minX))")
+                    Spacer()
+                        Text("minX: \(Int(geometry.frame(in: .local).minX))")
+                    }
+                }.padding(.vertical)
             }
-            .background(Color.pink)
             .foregroundColor(.white)
-            Text("Note The position modifier uses the view's center point when setting the X and Y parameters")
-                .font(.title)
+            .background(Color.pink)
+            Image("MixMidMax")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
             
-        }
-        
-        
+                    
+                
+                }
+            
+    }
         
     }
     
@@ -53,4 +67,4 @@ struct ContentView: View {
     }
     
     
-}
+
