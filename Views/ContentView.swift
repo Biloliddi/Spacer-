@@ -3,57 +3,53 @@
 //  Views
 //
 //  Created by Biloliddin Nosirov on 2023/02/23.
-// Min Mid Max Coordinates Continued
+// ControlSize
 
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
         
-        
-        
-        VStack(spacing: 20) {
-            Text("GeomitryReader")
-                .font(.largeTitle)
-            Text("Min Mid Max")
-                .font(.title)
-                .foregroundColor(.gray)
-            
-            Text("You can also get the minimum (min), middle(mind), and maximum (max)cX and Y  coordinate from the geomerty reader's frame.")
-                .font(.title)
-            
-            GeometryReader { geometry in
-                VStack (spacing: 10) {
-                   
-                    HStack(spacing: 10) {
-                        //I'm converting to Int just so we don't have so many zeros
-                        Text("minX: \(Int(geometry.frame(in: .local).minY))")
-                       Spacer()
-                        Text("minX: \(Int(geometry.frame(in: .local).minY))")
-                    Spacer()
-                        Text("minX: \(Int(geometry.frame(in: .local).minY))")
-                    }
-                    Text("Global Coordinate Space")
-                    HStack(spacing: 10) {
-                        //I'm converting to Int just so we don't have so many zeros
-                        Text("minX: \(Int(geometry.frame(in: .local).minX))")
-                       Spacer()
-                        Text("minX: \(Int(geometry.frame(in: .local).minX))")
-                    Spacer()
-                        Text("minX: \(Int(geometry.frame(in: .local).minX))")
-                    }
-                }.padding(.vertical)
-            }
-            .foregroundColor(.white)
-            .background(Color.pink)
-            Image("MixMidMax")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-            
-                    
+        ZStack{
+            VStack(spacing: 40) {
+                Text("Button")
+                    .font(.largeTitle)
+                Text("ControlSize")
+                    .font(.title).foregroundColor(.gray)
+                Text("USe controlSize to change the amount of padding around the content of the button")
+                    .padding()
+                    .foregroundColor(.white)
+                    .font(.title)
+                    .background(Color.red)
                 
-                }
-            
+                Button("Bordered - Mini") { }
+                    .buttonStyle(.bordered)
+                    .controlSize(.mini)
+                
+                Button("Bordered - Small") { }
+                    .buttonStyle(.bordered)
+                    .controlSize(.small)
+              
+                Button("Bordered - Regular") { }
+                    .buttonStyle(.bordered)
+                    .controlSize(.regular)
+                
+                Button("Bordered - Large") { }
+                    .buttonStyle(.bordered)
+                    .controlSize(.large)
+                
+                Button(action: {}) {
+                    Text("Bordered - Large")
+                        .frame(maxWidth: .infinity)
+                     }
+                .buttonStyle(.bordered)
+                .controlSize(.large)
+                       }
+            .accentColor(.purple)
+            .font(.title)
+                       }
+                    
+                       
     }
         
     }
@@ -61,7 +57,7 @@ struct ContentView: View {
     struct ContentView_Previews: PreviewProvider {
         static var previews: some View {
             ContentView()
-                .preferredColorScheme(.light)
+                .preferredColorScheme(.dark)
             
         }
     }
